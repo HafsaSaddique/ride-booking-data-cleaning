@@ -2,35 +2,97 @@
 
 ## Project Overview
 
-This project focuses on cleaning and documenting a real-world public ride booking dataset using Python and pandas.
-
-The main objective is to identify and handle data quality issues such as missing values, duplicate records, incorrect data types, and inconsistent categorical values.
-
-The original raw dataset will be preserved without modification, while the cleaned dataset will be stored separately.
+This project focuses on cleaning and documenting a real-world ride booking dataset using Python and Pandas. The objective is to identify and handle missing values, duplicate records, incorrect data types, unusable columns, redundant information, and inconsistent data while keeping the original dataset unchanged.
 
 ## Dataset
 
-The project uses a publicly available ride booking dataset containing information related to ride bookings, including booking status, vehicle type, dates, times, locations, cancellation information, and other booking-related attributes.
+The dataset contains ride booking records with information about booking status, customer and vehicle details, locations, cancellation information, payment methods, booking values, ride distance, and ratings.
 
-The original dataset is stored in the `data/raw/` directory.
+The original raw dataset is stored in:
 
-## Objectives
+`data/raw/Bookings.csv`
 
-* Identify missing values and decide how they should be handled.
-* Detect and investigate duplicate records.
-* Identify and correct inappropriate data types.
-* Identify and standardize inconsistent categorical values.
-* Preserve the original raw dataset.
-* Create and validate a cleaned dataset.
-* Document every important cleaning decision and its justification.
+The raw file is kept unchanged throughout the project.
 
 ## Tools and Technologies
 
-* Python
-* Pandas
-* Jupyter Notebook
-* Git
-* GitHub
+- Python
+- Pandas
+- Jupyter Notebook
+- VS Code
+- Git
+- GitHub
+
+## Dataset Statistics
+
+### Before Cleaning
+
+- Rows: 103,024
+- Columns: 21
+
+### After Cleaning
+
+- Rows: 103,024
+- Columns: 18
+
+### Rows Removed
+
+- Duplicate rows removed: 0
+- Duplicate Booking IDs removed: 0
+- Other rows removed: 0
+
+No rows were removed because the missing values were mainly associated with booking situations where certain information was not applicable.
+
+## Cleaning Performed
+
+### Date
+
+The `Date` column was converted from object/string format to `datetime64[ns]`.
+
+### Removed `Unnamed: 20`
+
+The column contained 103,024 missing values and therefore contained no usable information.
+
+### Removed `Vehicle Images`
+
+All 103,024 values contained `#NAME?`, so the column was removed because it contained invalid and unusable information.
+
+### Removed `Time`
+
+The `Time` column exactly matched the time component of the `Date` column for all 103,024 records. It was therefore redundant.
+
+### Missing Cancellation Information
+
+Missing values in cancellation-related columns were replaced with `Not Applicable` where the information did not apply to the booking.
+
+### Missing Payment Method
+
+The 39,057 missing payment methods corresponded to non-successful bookings. These values were replaced with `Not Applicable`.
+
+### Missing Ratings and TAT Values
+
+Missing `V_TAT`, `C_TAT`, `Driver_Ratings`, and `Customer_Rating` values were retained as missing because these measurements were not applicable to unsuccessful bookings.
+
+### Duplicate Checking
+
+No complete duplicate rows were found.
+
+No duplicate `Booking_ID` values were found.
+
+### Numerical Validation
+
+The following invalid-value checks found zero invalid records:
+
+- V_TAT <= 0: 0
+- C_TAT <= 0: 0
+- Booking Value <= 0: 0
+- Ride Distance < 0: 0
+- Driver Rating outside 3–5: 0
+- Customer Rating outside 3–5: 0
+
+### Category Validation
+
+The categorical columns were checked for leading and trailing whitespace. No values with extra whitespace were found.
 
 ## Project Structure
 
@@ -40,44 +102,15 @@ ride-booking-data-cleaning/
 ├── data/
 │   ├── raw/
 │   │   └── Bookings.csv
+│   │
 │   └── cleaned/
+│       └── cleaned_bookings.csv
 │
 ├── notebooks/
-│
-├── src/
+│   └── ride_booking_cleaning.ipynb
 │
 ├── docs/
+│   └── cleaning_decisions.md
 │
 ├── .gitignore
 └── README.md
-```
-
-## Data Cleaning
-
-The dataset will be inspected before any cleaning operations are performed.
-
-The following areas will be investigated:
-
-1. Missing values
-2. Duplicate records
-3. Data types
-4. Inconsistent categorical values
-5. Invalid or unexpected values
-
-Cleaning decisions will be based on the characteristics of the actual dataset rather than applying changes without justification.
-
-Detailed cleaning decisions, including the number of affected records and reasons for each decision, will be documented in the project documentation.
-
-## Row Count
-
-The original row count will be recorded before cleaning.
-
-The final row count will be recorded after cleaning.
-
-The difference between the two will be explained and justified.
-
-## Status
-
-**Phase 1: Project setup and dataset preparation**
-
-Data inspection and cleaning will be completed in the next phase.
