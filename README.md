@@ -114,42 +114,118 @@ ride-booking-data-cleaning/
 │
 ├── .gitignore
 └── README.md
-
-## Task 2: Exploratory Analysis and Visual Summary
-
-Task 2 analyzes the cleaned ride booking dataset produced in Task 1. The analysis focuses on trip volume, revenue, peak booking hours, city-wise usage, and driver ratings.
-
-### Analysis Performed
-
-The notebook performs the following analysis:
-
+Task 2: Exploratory Analysis and Visual Summary
+Task 2 uses the cleaned CSV produced in Task 1 to explore ride booking patterns and generate business-oriented visualizations.
+The analysis focuses on:
+- Trip volume
+- Revenue
+- Peak booking hours
+- City-wise usage
+- Driver ratings
+Analysis Performed
+The Task 2 notebook performs the following analysis:
 - Ride bookings by hour
 - Ride bookings over time
 - Successful booking value by pickup location
 - Ride bookings by pickup location
 - Driver rating distribution by vehicle type
-
-### Visualizations
-
+Pandas groupby() is used to aggregate bookings and booking values, while Matplotlib and Seaborn are used to create the visualizations.
+Task 2 Notebook
+The Task 2 exploratory analysis notebook is located at:
+notebooks/ride_booking_analysis.ipynb
+The notebook loads the cleaned dataset from:
+data/cleaned/cleaned_bookings.csv
+A reusable load_cleaned_data() function is included in the notebook to load the cleaned data and prepare the Date column for time-based analysis.
+Visualizations
 Five charts are generated and saved as PNG files:
+1. trips_by_hour.png — booking volume by hour
+2. trips_over_time.png — booking volume over time
+3. revenue_by_city.png — successful booking value by pickup location
+4. city_wise_usage.png — booking volume by pickup location
+5. driver_rating_heatmap.png — driver rating distribution by vehicle type
+The generated charts are stored in:
+outputs/charts/
+Business Analysis
+The exploratory analysis provides business-relevant information about:
+- Peak periods of ride demand
+- Changes in booking volume over time
+- Booking activity across pickup locations
+- Successful booking value across locations
+- Driver rating distribution across vehicle types
+These findings can help RapidRide understand customer demand patterns and support decisions related to driver scheduling, vehicle allocation, and service-quality monitoring.
+How to View and Run the Notebooks
+View the Notebook in VS Code
+The notebooks can be viewed directly in Visual Studio Code.
+Steps
+1. Clone or download this GitHub repository.
+2. Open the project folder in VS Code.
+3. Open the notebooks folder.
+4. Open ride_booking_cleaning.ipynb to view the Task 1 cleaning analysis.
+5. Open ride_booking_analysis.ipynb to view the Task 2 exploratory analysis.
+6. If VS Code asks you to select a Python kernel, select an installed Python environment.
+7. The notebook will open in the VS Code Notebook interface.
+8. To execute the complete notebook, use the Run All option in the notebook toolbar.
+View the Notebook Using Jupyter Notebook
+Jupyter Notebook can also be used to view and run the notebooks.
+Open a terminal in the project folder and run:
+jupyter notebook
 
-1. `trips_by_hour.png` — booking volume by hour
-2. `trips_over_time.png` — booking volume over time
-3. `revenue_by_city.png` — successful booking value by pickup location
-4. `city_wise_usage.png` — booking volume by pickup location
-5. `driver_rating_heatmap.png` — driver rating distribution by vehicle type
+A browser window will open.
+Navigate to the notebooks folder and select either:
+ride_booking_cleaning.ipynb
 
-### Python Packages
+or:
+ride_booking_analysis.ipynb
 
-The project uses:
+The notebook can then be viewed and executed from the Jupyter Notebook interface.
+Run the Task 2 Analysis
+After opening:
+notebooks/ride_booking_analysis.ipynb
+run the notebook from the first cell to the last cell.
+The notebook will:
+1. Load the cleaned dataset.
+2. Prepare the date information.
+3. Analyze trip volume.
+4. Analyze peak booking hours.
+5. Analyze booking value.
+6. Analyze city-wise usage.
+7. Analyze driver ratings.
+8. Generate the visualizations.
+9. Save the charts as PNG files.
+The generated charts will be saved in:
+outputs/charts/
+Project Structure
+ride-booking-data-cleaning/
+│
+├── data/
+│   ├── raw/
+│   │   └── Bookings.csv
+│   │
+│   └── cleaned/
+│       └── cleaned_bookings.csv
+│
+├── notebooks/
+│   ├── ride_booking_cleaning.ipynb
+│   └── ride_booking_analysis.ipynb
+│
+├── outputs/
+│   └── charts/
+│       ├── trips_by_hour.png
+│       ├── trips_over_time.png
+│       ├── revenue_by_city.png
+│       ├── city_wise_usage.png
+│       └── driver_rating_heatmap.png
+│
+├── docs/
+│   └── cleaning_decisions.md
+│
+├── src/
+│
+├── .gitignore
+│
+└── README.md
 
-- Python 3
-- pandas
-- matplotlib
-- seaborn
-- Jupyter
-
-Install the required packages with:
-
-```bash
-pip install pandas matplotlib seaborn jupyter
+Reproducibility
+The raw dataset is kept untouched in data/raw/.
+The cleaned dataset is stored separately in data/cleaned/.
+The Task 1 notebook documents the cleaning process, while the Task 2 notebook loads the cleaned dataset using the load_cleaned_data() function.
