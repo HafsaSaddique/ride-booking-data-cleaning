@@ -224,6 +224,52 @@ ride-booking-data-cleaning/
 ├── .gitignore
 │
 └── README.md
+# Ride Booking Data Cleaning and Exploratory Analysis
+
+## Project Overview
+
+This project focuses on cleaning and documenting a real-world ride booking dataset using Python and Pandas. The objective is to identify and handle missing values, duplicate records, incorrect data types, unusable columns, redundant information, and inconsistent data while keeping the original dataset unchanged.
+
+The project also includes exploratory analysis of the cleaned ride booking data. The analysis examines trip volume, revenue, peak booking hours, city-wise usage, and driver ratings using Python, Pandas, Matplotlib, and Seaborn.
+
+## Dataset
+
+The dataset contains ride booking records with information about booking status, customer and vehicle details, locations, cancellation information, payment methods, booking values, ride distance, and ratings.
+
+The original raw dataset is stored in:
+
+`data/raw/Bookings.csv`
+
+The raw file is kept unchanged throughout the project.
+
+The cleaned dataset is stored in:
+
+`data/cleaned/cleaned_bookings.csv`
+
+## Tools and Technologies
+
+- Python
+- Pandas
+- Matplotlib
+- Seaborn
+- Jupyter Notebook
+- VS Code
+- Git
+- GitHub
+
+## Required Python Packages
+
+The following Python packages are required to run the notebooks:
+
+- pandas
+- matplotlib
+- seaborn
+- jupyter
+
+Install the required packages using:
+
+```bash
+pip install pandas matplotlib seaborn jupyter
 
 Reproducibility
 The raw dataset is kept untouched in data/raw/.
