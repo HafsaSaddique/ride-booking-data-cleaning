@@ -114,3 +114,42 @@ ride-booking-data-cleaning/
 │
 ├── .gitignore
 └── README.md
+
+## Task 2: Exploratory Analysis and Visual Summary
+
+Task 2 analyzes the cleaned ride booking dataset produced in Task 1. The analysis focuses on trip volume, revenue, peak booking hours, city-wise usage, and driver ratings.
+
+### Analysis Performed
+
+The notebook performs the following analysis:
+
+- Ride bookings by hour
+- Ride bookings over time
+- Successful booking value by pickup location
+- Ride bookings by pickup location
+- Driver rating distribution by vehicle type
+
+### Visualizations
+
+Five charts are generated and saved as PNG files:
+
+1. `trips_by_hour.png` — booking volume by hour
+2. `trips_over_time.png` — booking volume over time
+3. `revenue_by_city.png` — successful booking value by pickup location
+4. `city_wise_usage.png` — booking volume by pickup location
+5. `driver_rating_heatmap.png` — driver rating distribution by vehicle type
+
+### Python Packages
+
+The project uses:
+
+- Python 3
+- pandas
+- matplotlib
+- seaborn
+- Jupyter
+
+Install the required packages with:
+
+```bash
+pip install pandas matplotlib seaborn jupyter
